@@ -20,3 +20,5 @@ public class LoginPage {
     WebElement loginSubmit;
     
 }
+
+// Assert that we're on the dashboard page with Welcome back,
