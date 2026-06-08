@@ -9,6 +9,12 @@ import utils.BrowserFactory;
 // Constructor setup
 public class BasePage {
 
+    // Here so both dashboardPage and LogoutPage can inherit it
+    @FindBy(xpath = "//span[text()='Menu']")
+    protected WebElement menuButton;
+
+
+
     BrowserFactory browserFactory = new BrowserFactory();
     final WebDriver driver = BrowserFactory.startBrowser(
         "Edge",
@@ -20,9 +26,8 @@ public class BasePage {
     DashboardPage dashboardPage = PageFactory.initElements(driver, DashboardPage.class);
 
 
-    // Here so both dashboardPage and LogoutPage can inherit it
-    @FindBy(xpath = "//span[text()='Menu']")
-    protected WebElement menuButton;
-
+public void menuButtonClick(){
+    menuButton.click();
+    }
 
 }
