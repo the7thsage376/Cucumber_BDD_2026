@@ -1,22 +1,18 @@
-package pages;
+package Steps;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.AdminPanelPage;
+import pages.DashboardPage;
+import pages.LoginPage;
 import utils.BrowserFactory;
 
 // Constructor setup
 public class BasePage {
 
-    // Here so both dashboardPage and LogoutPage can inherit it
-    @FindBy(xpath = "//span[text()='Menu']")
-    protected WebElement menuButton;
-
-
-
     BrowserFactory browserFactory = new BrowserFactory();
-    final WebDriver driver = BrowserFactory.startBrowser(
+    
+    final WebDriver driver = browserFactory.startBrowser(
         "Edge",
         "https://ndosisimplifiedautomation.vercel.app/#practice"
     );
@@ -25,9 +21,5 @@ public class BasePage {
     AdminPanelPage adminPanelPage = PageFactory.initElements(driver, AdminPanelPage.class);
     DashboardPage dashboardPage = PageFactory.initElements(driver, DashboardPage.class);
 
-
-public void menuButtonClick(){
-    menuButton.click();
-    }
 
 }
