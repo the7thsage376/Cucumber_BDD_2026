@@ -39,6 +39,7 @@ public class LoginPage {
     }
 
     public void LoginPasswordField(){
+
         loginPassword.sendKeys("@password1234");
     }
 

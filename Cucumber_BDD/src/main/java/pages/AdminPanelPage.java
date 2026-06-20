@@ -47,5 +47,48 @@ public class AdminPanelPage {
     WebElement CreateGroupButton;
 
 
+    public void AdminPanel(){
+        adminPanelButton.click();
+    }
+
+    public void GroupsButton(){
+        groupsButton.click();
+    }
+
+    public void NewGroup(){
+        createNewGroupButton.click();
+    }
+
+    public void GroupNameInput(String groupName){
+        groupNameInput.sendKeys(groupName);
+    }
+
+    //Add gherkin syntax later
+    public void GroupDescription(){
+        groupDescriptionInput.sendKeys("Group Description");
+    }
+
+    public void GroupYear(){
+        groupYearInput.sendKeys("2018");
+    }
+
+    public void GroupMaxCapacity(){
+        groupMaxCapacityInput.sendKeys("100");
+    }
+
+    public void GroupStartDate(){
+        groupStartDateInput.sendKeys("2018");
+    }
+
+    public void GroupEndDate(){
+        groupEndDateInput.sendKeys("2018");
+
+    }
+
+    public void CreateGroupButton(){
+        CreateGroupButton.click();
+    }
+
+
 
 }

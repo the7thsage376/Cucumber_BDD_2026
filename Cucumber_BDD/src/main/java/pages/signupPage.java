@@ -13,5 +13,13 @@ public class signupPage {
     @FindBy(id = "register-group")
     WebElement GroupSelector;
 
+    public void SignUp(){
+        signupButton.click();
+    }
+
+    public void GroupSelector(){
+        GroupSelector.click();
+    }
+
     //Verify that the group created is displayed on the group selector.
 }
