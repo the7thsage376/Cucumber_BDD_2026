@@ -44,6 +44,7 @@ public class LoginPage {
     }
 
     public void clickLoginSubmit(){
+
         loginSubmit.click();
     }
 }

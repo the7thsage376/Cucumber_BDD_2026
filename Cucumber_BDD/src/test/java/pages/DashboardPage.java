@@ -24,6 +24,7 @@ public class DashboardPage {
     WebElement adminPanelButton;
 
     public void clickAdminPanelButton(){
+
         adminPanelButton.click();
     }
 

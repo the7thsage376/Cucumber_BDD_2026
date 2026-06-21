@@ -24,7 +24,17 @@ public class LogoutPage {
     WebElement logoutButton;
 
 
+    public void BackToWebsite(){
+        backToWebsiteButton.click();
+
+    }
+
+    public void LogOut(){
+        logoutButton.click();
+    }
+
     public void clickConfirmLogout() {
+
         wait.until(ExpectedConditions.alertIsPresent()).accept();
     }
 

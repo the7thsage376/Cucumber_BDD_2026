@@ -80,14 +80,9 @@ public class AdminPanelPage {
         groupStartDateInput.sendKeys("2018");
     }
 
-    public void GroupEndDate(){
-        groupEndDateInput.sendKeys("2018");
+    public void GroupEndDate(){groupEndDateInput.sendKeys("2018");}
 
-    }
-
-    public void CreateGroupButton(){
-        CreateGroupButton.click();
-    }
+    public void CreateGroupButton(){ CreateGroupButton.click(); }
 
 
 
