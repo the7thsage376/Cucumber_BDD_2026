@@ -34,13 +34,13 @@ public class LoginPage {
         loginButton.click();
     }
 
-    public void LoginEmailField(){
-        loginEmail.sendKeys("testing007@gmail.com");
+    public void LoginEmailField( String email ){
+        loginEmail.sendKeys(email);
     }
 
-    public void LoginPasswordField(){
+    public void LoginPasswordField( String password){
 
-        loginPassword.sendKeys("@password1234");
+        loginPassword.sendKeys(password);
     }
 
     public void clickLoginSubmit(){

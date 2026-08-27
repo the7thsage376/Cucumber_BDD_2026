@@ -64,23 +64,22 @@ public class AdminPanelPage {
     }
 
     //Add gherkin syntax later
-    public void GroupDescription(){
-        groupDescriptionInput.sendKeys("Group Description");
+    public void GroupDescription(String groupDescription){
+        groupDescriptionInput.sendKeys(groupDescription);
     }
 
-    public void GroupYear(){
-        groupYearInput.sendKeys("2018");
+    public void GroupYear( String year){
+        groupYearInput.sendKeys(year);
     }
 
-    public void GroupMaxCapacity(){
-        groupMaxCapacityInput.sendKeys("100");
+    public void GroupMaxCapacity(String maxCapacity){
+        groupMaxCapacityInput.sendKeys(maxCapacity);
     }
 
-    public void GroupStartDate(){
-        groupStartDateInput.sendKeys("2018");
+    public void GroupStartDate( String startDate){groupStartDateInput.sendKeys(startDate);
     }
 
-    public void GroupEndDate(){groupEndDateInput.sendKeys("2018");}
+    public void GroupEndDate(String endDate){groupEndDateInput.sendKeys(endDate);}
 
     public void CreateGroupButton(){ CreateGroupButton.click(); }
 

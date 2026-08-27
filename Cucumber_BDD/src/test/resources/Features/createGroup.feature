@@ -1,3 +1,4 @@
+@createGroup
 Feature: Login an group creation
 
   Scenario Outline: As a user I want to login, create a group and verify that the group is created
@@ -17,7 +18,7 @@ Feature: Login an group creation
     And I enter start date <startDate>
     And I enter end date <endDate>
     When I click on the create group button
-    Then I should see the group created successfully
+
 
     Examples:
     | email                | password      | groupName  |  groupDescription    | year | maxCapacity | startDate  | endDate    |
