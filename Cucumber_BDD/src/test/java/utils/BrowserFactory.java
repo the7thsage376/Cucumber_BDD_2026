@@ -14,21 +14,23 @@ public class BrowserFactory {
         ChromeOptions chromeOptions = new ChromeOptions();
         EdgeOptions edgeOptions = new EdgeOptions();
 
-        if (browserChoice.equalsIgnoreCase("ChRoMe")){
-            chromeOptions.addArguments("--headless");
-
+        if (browserChoice.equalsIgnoreCase("chrome")) {
+            // chromeOptions.addArguments("--headless=new");
             driver = new ChromeDriver(chromeOptions);
-
-        } else if (browserChoice.equalsIgnoreCase(("EdgE"))){
-            edgeOptions.addArguments("--headless");
-
+        } else if (browserChoice.equalsIgnoreCase("edge")) {
+            // edgeOptions.addArguments("--headless=new");
             driver = new EdgeDriver(edgeOptions);
-
         }
+
         driver.manage().window().setSize(new Dimension(1920, 1080));
         driver.get(url);
         return driver;
+    }
 
-
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }

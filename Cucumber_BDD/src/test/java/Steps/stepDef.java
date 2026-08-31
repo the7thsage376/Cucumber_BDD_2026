@@ -1,10 +1,12 @@
 package Steps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
+import utils.BrowserFactory;
 
 
 public class stepDef extends BasePage {
@@ -12,7 +14,7 @@ public class stepDef extends BasePage {
 
     @Given("^I am on the login page$")
     public void I_login_To_Website() {
-        loginPage.clickLoginButton();
+        Assert.assertTrue(loginPage.isLoginPageDisplayed(), "The login page did not load properly.");
     }
 
     @And("^I enter email (.*)$")
@@ -93,6 +95,11 @@ public class stepDef extends BasePage {
     }
 
     //Fix Gherkin syntax and typo mistake later
+
+    @After
+    public void tearDown() {
+        BrowserFactory.quitDriver();
+    }
 }
 
 

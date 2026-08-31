@@ -11,7 +11,7 @@ public class BasePage {
     BrowserFactory browserFactory = new BrowserFactory();
     
     final WebDriver driver = browserFactory.startBrowser(
-        "Edge",
+        "chrome",
         "https://ndosisimplifiedautomation.vercel.app/#practice"
     );
 

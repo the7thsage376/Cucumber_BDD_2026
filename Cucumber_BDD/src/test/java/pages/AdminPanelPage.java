@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -14,6 +16,7 @@ public class AdminPanelPage {
     public AdminPanelPage(WebDriver driver){
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//span[text()='Admin Panel']")
@@ -48,41 +51,47 @@ public class AdminPanelPage {
 
 
     public void AdminPanel(){
-        adminPanelButton.click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(adminPanelButton)).click();
     }
 
     public void GroupsButton(){
-        groupsButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(groupsButton)).click();
     }
 
     public void NewGroup(){
-        createNewGroupButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(createNewGroupButton)).click();
     }
 
     public void GroupNameInput(String groupName){
-        groupNameInput.sendKeys(groupName);
+
+        wait.until(ExpectedConditions.visibilityOf(groupNameInput)).sendKeys(groupName);
     }
 
     //Add gherkin syntax later
     public void GroupDescription(String groupDescription){
-        groupDescriptionInput.sendKeys(groupDescription);
+        wait.until(ExpectedConditions.visibilityOf(groupDescriptionInput)).sendKeys(groupDescription);
     }
 
     public void GroupYear( String year){
-        groupYearInput.sendKeys(year);
+        wait.until(ExpectedConditions.visibilityOf(groupYearInput)).sendKeys(year);
     }
 
     public void GroupMaxCapacity(String maxCapacity){
-        groupMaxCapacityInput.sendKeys(maxCapacity);
+        wait.until(ExpectedConditions.visibilityOf(groupMaxCapacityInput)).sendKeys(maxCapacity);
     }
 
-    public void GroupStartDate( String startDate){groupStartDateInput.sendKeys(startDate);
+    public void GroupStartDate( String startDate){
+        wait.until(ExpectedConditions.visibilityOf(groupStartDateInput)).sendKeys(startDate);
     }
 
-    public void GroupEndDate(String endDate){groupEndDateInput.sendKeys(endDate);}
+    public void GroupEndDate(String endDate){
+        wait.until(ExpectedConditions.visibilityOf(groupEndDateInput)).sendKeys(endDate);
+    }
 
-    public void CreateGroupButton(){ CreateGroupButton.click(); }
-
+    public void CreateGroupButton(){
+        wait.until(ExpectedConditions.elementToBeClickable(CreateGroupButton)).click();
+    }
 
 
 }

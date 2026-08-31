@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -32,12 +33,13 @@ public class DashboardPage {
 
     //Click on menu button
     public void clickMenuButton(){
-        menuButton.click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(menuButton)).click();
     }
 
     public void clickAdminPanelButton(){
 
-        adminPanelButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(adminPanelButton)).click();
     }
 
 //    public void WelcomeMessageIsDisplayed(){
