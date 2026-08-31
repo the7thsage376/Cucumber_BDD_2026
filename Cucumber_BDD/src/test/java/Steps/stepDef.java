@@ -35,7 +35,7 @@ public class stepDef extends BasePage {
     // AI suggestion for the use of contains
     @Then("^I should be logged in successfully$")
     public void I_should_be_logged_in_successfully() {
-        Assert.assertTrue(driver.getPageSource().contains("Welcome back"));
+        Assert.assertTrue(dashboardPage.isUserLoggedIn(),"User was not redirected to the dashboard!");
     }
 
     @And("^I click on the logged in user$")
@@ -92,6 +92,16 @@ public class stepDef extends BasePage {
     @When("^I click on the create group button$")
     public void I_click_on_the_create_group_button() {
         adminPanelPage.CreateGroupButton();
+    }
+
+    @And("^I log out of the application$")
+    public void I_log_out_of_the_application() {
+        dashboardPage.CompleteLogout();
+    }
+
+    @And("I navigate to the sign up page$")
+    public void I_navigate_to_the_sign_up_page() {
+        signupPage.SignUp();
     }
 
     //Fix Gherkin syntax and typo mistake later

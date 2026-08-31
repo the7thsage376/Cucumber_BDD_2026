@@ -11,14 +11,24 @@ public class BrowserFactory {
     public static WebDriver driver;
 
     public static WebDriver startBrowser(String browserChoice, String url) {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        EdgeOptions edgeOptions = new EdgeOptions();
-
         if (browserChoice.equalsIgnoreCase("chrome")) {
+            ChromeOptions chromeOptions = new ChromeOptions();
+
+            // 1. Add all arguments first
             // chromeOptions.addArguments("--headless=new");
+            chromeOptions.addArguments("--remote-allow-origins=*");
+            chromeOptions.addArguments("--disable-sync");
+            chromeOptions.addArguments("--disable-background-networking");
+            chromeOptions.addArguments("--disable-component-update");
+            chromeOptions.addArguments("--disable-default-apps");
+
+            // 2. Initialize the driver with the configured options
             driver = new ChromeDriver(chromeOptions);
+
         } else if (browserChoice.equalsIgnoreCase("edge")) {
+            EdgeOptions edgeOptions = new EdgeOptions();
             // edgeOptions.addArguments("--headless=new");
+            edgeOptions.addArguments("--remote-allow-origins=*");
             driver = new EdgeDriver(edgeOptions);
         }
 

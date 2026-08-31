@@ -18,8 +18,11 @@ Feature: Login an group creation
     And I enter start date <startDate>
     And I enter end date <endDate>
     When I click on the create group button
+    And I log out of the application
+    And I navigate to the sign up page
+    Then I verify that the group <groupName> exists in the group dropdown
 
 
     Examples:
     | email                | password      | groupName  |  groupDescription    | year | maxCapacity | startDate  | endDate    |
-    | testing007@gmail.com | @password1234 |Cohort 2027 | The best of the SDET | 2027 | 100         | 0005182026 | 0005182027 |
+    | testing007@gmail.com | @password1234 |Cohort 2027 | The best of the SDET | 2027 | 100         | 20260901 |20261201 |

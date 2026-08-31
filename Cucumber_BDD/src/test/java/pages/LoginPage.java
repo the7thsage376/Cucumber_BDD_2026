@@ -20,8 +20,8 @@ public class LoginPage {
     }
 
 
-    @FindBy(xpath = "//span[contains(text(), 'Login')]")
-   WebElement loginButton;
+//    @FindBy(xpath = "//span[contains(text(), 'Login')]")
+//   WebElement loginButton;
 
     @FindBy(id = "login-email")
    WebElement loginEmail;
@@ -33,9 +33,9 @@ public class LoginPage {
    WebElement loginSubmit;
 
 
-    public void clickLoginButton(){
 
-        wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
+    public boolean isLoginPageDisplayed() {
+        return wait.until(ExpectedConditions.visibilityOf(loginEmail)).isDisplayed();
     }
 
     public void LoginEmailField( String email ){
