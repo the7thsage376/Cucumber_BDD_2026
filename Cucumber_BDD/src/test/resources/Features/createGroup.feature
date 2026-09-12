@@ -20,7 +20,7 @@ Feature: Login an group creation
     When I click on the create group button
     And I log out of the application
     And I navigate to the sign up page
-    Then I verify that the group <groupName> exists in the group dropdown
+    Then I verify that the group exists in the group dropdown <groupName>
 
 
     Examples:

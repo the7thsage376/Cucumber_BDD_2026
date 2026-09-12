@@ -1,10 +1,14 @@
 package Steps;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import utils.BrowserFactory;
 
@@ -99,17 +103,35 @@ public class stepDef extends BasePage {
         dashboardPage.CompleteLogout();
     }
 
-    @And("I navigate to the sign up page$")
+    @And("^I navigate to the sign up page$")
     public void I_navigate_to_the_sign_up_page() {
+
         signupPage.SignUp();
     }
 
+    @Then("^I verify that the group exists in the group dropdown (.*)$")
+    public void I_verify_that_the_group_exists_in_the_group_dropdown(String groupName) {
+        Assert.assertTrue(signupPage.VerifyGroupName(groupName), "The group was not found in the dropdown.");
+        System.out.println("Verified successfully: " + groupName + " is present in the dropdown.");
+
+    }
+
     //Fix Gherkin syntax and typo mistake later
+
+    @AfterStep
+    public void addScreenshots(Scenario scenario) {
+        if (scenario.isFailed()) {
+            byte[] screenshots = ((TakesScreenshot) BrowserFactory.driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshots, "image/png", "image");
+        }
+    }
 
     @After
     public void tearDown() {
         BrowserFactory.quitDriver();
     }
+
+
 }
 
 

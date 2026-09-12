@@ -35,6 +35,9 @@ public class DashboardPage {
     @FindBy(xpath = "//span[text()='Logout']")
     WebElement logoutButton;
 
+
+    //Methods
+
     public boolean isUserLoggedIn() {
         // Waits for either the URL hash to reach #dashboard OR the banner to show
         return wait.until(ExpectedConditions.or(
@@ -43,16 +46,20 @@ public class DashboardPage {
         ));
     }
 
-    //Click on menu button
+
     public void clickMenuButton() {
 
         wait.until(ExpectedConditions.elementToBeClickable(menuButton)).click();
     }
 
+
+
     public void clickAdminPanelButton() {
 
         wait.until(ExpectedConditions.elementToBeClickable(adminPanelButton)).click();
     }
+
+
 
     public void CompleteLogout() {
         wait.until(ExpectedConditions.elementToBeClickable(backToWebsiteButton)).click();

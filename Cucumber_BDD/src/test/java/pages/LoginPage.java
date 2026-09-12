@@ -20,8 +20,7 @@ public class LoginPage {
     }
 
 
-//    @FindBy(xpath = "//span[contains(text(), 'Login')]")
-//   WebElement loginButton;
+
 
     @FindBy(id = "login-email")
    WebElement loginEmail;

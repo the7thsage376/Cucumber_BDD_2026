@@ -19,6 +19,9 @@ public class signupPage {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(xpath = "//span[contains(text(), 'Login')]")
+    WebElement loginButton;
+
     @FindBy(id = "signup-toggle")
     WebElement signupButton;
 
@@ -26,14 +29,19 @@ public class signupPage {
     WebElement GroupSelector;
 
 
-
     public void SignUp(){
 
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
+
         wait.until(ExpectedConditions.elementToBeClickable(signupButton)).click();
+
+
     }
 
-    public void GroupSelector(){
-        wait.until(ExpectedConditions.elementToBeClickable(GroupSelector)).click();
+    public Boolean VerifyGroupName(String groupName ){
+
+        wait.until(ExpectedConditions.visibilityOf(GroupSelector));
+        return GroupSelector.getText().contains(groupName);
     }
 
     //Verify that the group created is displayed on the group selector.
