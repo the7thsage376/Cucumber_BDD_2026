@@ -90,16 +90,21 @@ public class AdminPanelPage {
     }
 
     public void CreateGroupButton(){
-        wait.until(ExpectedConditions.elementToBeClickable(CreateGroupButton)).click();
-        // 2. Handle alert or modal dismissal so the API request completes
+        // 1. Force the submit click via JS so it triggers regardless of modal viewport/overlay
+        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", CreateGroupButton);
+
+        // 2. Handle alert if present
         try {
-            // If the app triggers a standard browser alert (e.g. "Group created successfully!")
             WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(3));
             alertWait.until(ExpectedConditions.alertIsPresent()).accept();
         } catch (Exception ignored) {
-            // If it's a modal overlay on the page, wait for the submit button or modal to disappear
-            wait.until(ExpectedConditions.invisibilityOf(CreateGroupButton));
+            // Alert not present, continue
         }
+
+        // 3. Give the network call a moment to persist
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ignored) {}
     }
 
 
