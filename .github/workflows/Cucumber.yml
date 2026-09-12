@@ -26,3 +26,44 @@ jobs:
 
       - name: Run Cucumber Tests
         run: mvn clean test
+
+      - name: Package Extent & Cucumber Reports
+        if: always()
+        run: |
+            mkdir -p execution-reports
+            # Copy whatever reports exist (HTML, Spark, PDF) into the reports folder
+            cp -r test-output/* execution-reports/ 2>/dev/null || true
+            zip -r cucumber-extent-report.zip execution-reports
+
+      - name: Upload Test Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-execution-report
+          path: cucumber-extent-report.zip
+          retention-days: 14
+
+          
+      - name: Send Email with Test Report
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+            server_address: smtp.gmail.com
+            server_port: 465
+            secure: true
+            username: ${{ secrets.MAIL_USERNAME }}
+            password: ${{ secrets.MAIL_PASSWORD }}
+            subject: "Cucumber BDD UI Report: ${{ job.status }} (Build #${{ github.run_number }})"
+            to: ${{ secrets.MAIL_USERNAME }}
+            from: "Cucumber CI Automation <${{ secrets.MAIL_USERNAME }}>"
+            body: |
+              Cucumber BDD Test Run completed.
+              
+              Status: ${{ job.status }}
+              Branch: ${{ github.ref_name }}
+              Triggered By: ${{ github.actor }}
+              Commit: ${{ github.sha }}
+              
+              The execution report zip is attached.
+            attachments: cucumber-extent-report.zip
+          
