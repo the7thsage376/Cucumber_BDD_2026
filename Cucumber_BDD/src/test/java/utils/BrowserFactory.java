@@ -15,7 +15,9 @@ public class BrowserFactory {
             ChromeOptions chromeOptions = new ChromeOptions();
 
             // 1. Add all arguments first
-             chromeOptions.addArguments("--headless=new");
+            chromeOptions.addArguments("--no-sandbox"); // Critical for Linux/Docker environments
+            chromeOptions.addArguments("--disable-dev-shm-usage");
+            chromeOptions.addArguments("--headless=new");
             chromeOptions.addArguments("--remote-allow-origins=*");
             chromeOptions.addArguments("--disable-sync");
             chromeOptions.addArguments("--disable-background-networking");
@@ -27,7 +29,10 @@ public class BrowserFactory {
 
         } else if (browserChoice.equalsIgnoreCase("edge")) {
             EdgeOptions edgeOptions = new EdgeOptions();
-             edgeOptions.addArguments("--headless=new");
+
+            edgeOptions.addArguments("--no-sandbox");
+            edgeOptions.addArguments("--disable-dev-shm-usage");
+            edgeOptions.addArguments("--headless=new");
             edgeOptions.addArguments("--remote-allow-origins=*");
             driver = new EdgeDriver(edgeOptions);
         }
