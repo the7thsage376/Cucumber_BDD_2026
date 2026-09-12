@@ -62,8 +62,8 @@ public class DashboardPage {
 
 
     public void CompleteLogout() {
-        //Javascript because of pipeline dom overlay issues
-//        wait.until(ExpectedConditions.elementToBeClickable(backToWebsiteButton)).click();
+        
+        wait.until(ExpectedConditions.visibilityOf(backToWebsiteButton));
         ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", backToWebsiteButton);
 
         wait.until(ExpectedConditions.elementToBeClickable(menuButton)).click();
